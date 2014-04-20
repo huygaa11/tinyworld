@@ -33,6 +33,7 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index); //no users set up yet, so won't load
 app.get('/users', user.list);
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.get('/profiles', routes.getProfiles);
 =======
 app.get('/toprankings', routes.toprankings);
@@ -43,6 +44,9 @@ app.get('/forgotpw', routes.forgotpw);
 app.get('/settings', routes.settings);
 
 >>>>>>> d66248a289f9bda7ac910c135e17ac9f695f62f4
+=======
+
+>>>>>>> database-edit
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

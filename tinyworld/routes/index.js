@@ -1,5 +1,8 @@
 
+<<<<<<< HEAD
 var users = require('../routes/user');
+=======
+>>>>>>> database-edit
 
 //This one was here by default. Not necessary
 exports.index = function(req, res){
@@ -7,6 +10,7 @@ exports.index = function(req, res){
   res.render('index', { title: 'Welcome to Tiny World' });
 };
 
+<<<<<<< HEAD
 exports.getProfiles = function (req, res) {
     res.render('profiles', {title: 'TinyWorld'});
 };
@@ -118,3 +122,5 @@ exports.register = function(req, res){
 };
 
 >>>>>>> d66248a289f9bda7ac910c135e17ac9f695f62f4
+=======
+>>>>>>> database-edit
