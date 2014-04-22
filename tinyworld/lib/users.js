@@ -119,7 +119,7 @@ pg.connect(conn, function(err, client, done){ // connecting to the db
 		throw err;
 	}	
 		
-	var qry ='select uname from users where uname=$1'; // used for not making the client.query too big. 
+	var qry ='select username from users where username=$1'; // used for not making the client.query too big. 
 	client.query(qry, [username], function (err, result) { //selecting from the db
 		done(); // connection done. 
 		if(err){ // if cannot select, throw error. bad practice. send callback to user!!!
@@ -203,4 +203,6 @@ exports.validate = function(username, password, callback){
 	});
 });
 };
+ exports.logout =function(){
 
+};

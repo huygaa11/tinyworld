@@ -58,7 +58,7 @@ app.post('/authorize', routes.authorize);
 app.post('/register', routes.register);
 app.get('/logout', routes.logout);
 app.get('/authorize', routes.authorize);
-app.get('/registration', routes.showRegistration);
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
