@@ -3,12 +3,12 @@
  * Module dependencies.
  */
 
+var flash = require('connect-flash');
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
-
 var app = express();
 
 // all environments
@@ -22,6 +22,11 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.cookieParser('your secret here'));
+app.use(express.session());
+// use flash
+app.use(flash());
 
 // development only
 if ('development' == app.get('env')) {
@@ -40,6 +45,10 @@ app.get('/challenge', routes.challenge);
 app.get('/forgotpw', routes.forgotpw);
 app.get('/settings', routes.settings);
 
+app.post('/register', routes.register);
+app.get('/logout', routes.logout);
+app.get('/authorize', routes.authorize);
+app.get('/registration', routes.showRegistration);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
