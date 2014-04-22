@@ -7,17 +7,12 @@ exports.index = function(req, res){
 };
 
 exports.home = function(req,res){
-	var user = req.session.user;
-	if (user)
-		res.redirect('/profile');
-	else {
-		res.render('home', {title: 'Home'});
-
-	}
+	res.render('home', {title: 'Home'});
 };
 
 exports.toprankings = function(req, res){
-	users.getAllUsers(function(err, allusers){
+	users.getAllUsers(function(err, allusers
+			posts.add(user, post);) {
 		//Check for the top people here? or in the ejs... hmmm
 		if(err)
 			console.log('error');
@@ -30,17 +25,31 @@ exports.toprankings = function(req, res){
 };
 
 exports.profile = function(req, res){
-	var user = req.session.user;
-
-	users.getuser(user, function (err, user){
+/*	var user = req.session.user;
+	res.render('profile', {
+		user : user
+	});*/
+	var uname = 'huygaa11';
+	users.getuser(uname, function(err, user){
 		if(err)
 			console.log("error");
-		else {
-			res.render('profile', { title: 'Profile',
-				rows : user
+		else
+			res.render('profile', {
+				user : user,
+				title   : 'Profile',
+				fname   : user.fname,
+				lname   : user.lname,
+				gender  : user.gender,
+				age     : user.age,
+				
+
+				picture : user.picture
 			});
-		}
 	});
+};
+
+exports.settings = function(req, res){
+
 };
 
 exports.challenge = function(req, res){
@@ -66,26 +75,6 @@ exports.logout = function (req, res) {
 	}
 	else {
 
-		req.session.destroy(function () {
-			res.redirect('/home');
-		});
-	}
-};
-
-exports.settings = function (req, res) {
-	res.render('settings');
-};
-
-exports.logout = function (req, res) {
-	// Grab the user object from the session:
-	var user = req.session.user;
-
-	// If this is not a logged in user we redirect:
-	if (!user) {
-		res.redirect('/');
-	}
-	else {
-
 		users.logout(user);
 		req.session.destroy(function () {
 			res.redirect('/home');
@@ -99,29 +88,29 @@ exports.register = function (req, res) {
 	var fname = req.body.fname;
 	var lname = req.body.lname;
 	var age = req.body.age;
-	// var gender = req.body.gender;
-	// var email = req.body.email;
+	var gender = req.body.gender;
+	var email = req.body.email;
 	if (!username || !password) {
 		req.flash('register', 'Must provide username and password');
-		res.redirect('/seeRegistration');
+		res.redirect('/registration');
 	}
 	else {
 
 		users.exists(username, function (exists) {
 			if (exists) {
 				req.flash('register', 'Username already exists. Pick another!');
-				res.redirect('/seeRegistration');
+				res.redirect('/registration');
 			}
 			else {
 
-				users.add(username, fname, lname, age, password, function (err, user) { //username
+				users.add(username, password, fname, lname, age, gender, function (err, user) {
 
 						if (err) {
 							req.flash('register', 'Problem with registration. Try again.');
 						}
 						else {
 							req.session.user = user;
-							console.log(user);
+							console.log(user.username);
 							res.redirect('/profile');
 						}
 				});
@@ -141,7 +130,7 @@ exports.authorize = function (req, res) {
 		users.validate(username, password, function (err, user) {
 			if (err) {
 	req.flash('authorize', err);
-	res.redirect('/home');
+	res.redirect('/');
 			}
 			else {
 	req.session.user = user;
@@ -149,10 +138,4 @@ exports.authorize = function (req, res) {
 			}
 		});
 	}
-};
-
-exports.seeRegistration = function (req, res){
-	res.render('registration', {
-				registererr: req.flash('register') //remember to add this
-			});
 };
