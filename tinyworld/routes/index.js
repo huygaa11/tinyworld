@@ -16,6 +16,23 @@ exports.home = function(req,res){
 	}
 };
 
+
+exports.challenges = function(req, res){
+	//challengeList should return an array of challenges
+	users.getChallenges(function(err, challengeList){
+		if(err)
+			console.log('An error has occured. Please try again later');
+		else{
+			res.render('challengearena', { 
+				challengeList : challengeList;
+			});
+		}
+
+	});
+}
+
+
+
 exports.toprankings = function(req, res){
 	users.getAllUsers(function(err, allusers){
 		//Check for the top people here? or in the ejs... hmmm
@@ -74,23 +91,6 @@ exports.logout = function (req, res) {
 
 exports.settings = function (req, res) {
 	res.render('settings');
-};
-
-exports.logout = function (req, res) {
-	// Grab the user object from the session:
-	var user = req.session.user;
-
-	// If this is not a logged in user we redirect:
-	if (!user) {
-		res.redirect('/');
-	}
-	else {
-
-		users.logout(user);
-		req.session.destroy(function () {
-			res.redirect('/home');
-		});
-	}
 };
 
 exports.register = function (req, res) {

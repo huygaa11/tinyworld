@@ -49,7 +49,6 @@ exports.add=function(username, fname, lname, age, password, callback){
 		else {
 			pg.connect(conn, function(err, client, done){
 				if(err){
-
 					console.log("error in connection to database");
 					throw err;
 				}
@@ -112,26 +111,6 @@ pg.connect(conn, function(err, client, done){ // connecting to the db
 });
 };
 
-exports.exists = function(username, cb){
-pg.connect(conn, function(err, client, done){ // connecting to the db
-	if(err){ // if cannot connect to the db throw error, bad practice!! send callback!
-		console.log("error in connection to database");
-		throw err;
-	}	
-		
-	var qry ='select username from users where username=$1'; // used for not making the client.query too big. 
-	client.query(qry, [username], function (err, result) { //selecting from the db
-		done(); // connection done. 
-		if(err){ // if cannot select, throw error. bad practice. send callback to user!!!
-			console.log("call to database did not work correctly");
-			cb(err);
-		}
-		// do something with the result 
-		if(result.rows) cb(undefined);
-		else cb('found');
-	});
-});	
-};
 
 exports.getuser=function(username, cb){
 pg.connect(conn, function(err, client, done){ // connecting to the db
@@ -182,7 +161,6 @@ exports.validate = function(username, password, callback){
 	if(err){ // if cannot connect to the db throw error, bad practice!! send callback!
 		console.log("error in connection to database");
 		throw err;
-
 	}
 
 	var qry ='select * from users where username=$1'; // used for not making the client.query too big. 
@@ -203,6 +181,4 @@ exports.validate = function(username, password, callback){
 	});
 });
 };
- exports.logout =function(){
 
-};
