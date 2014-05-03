@@ -46,7 +46,7 @@ exports.addChallenges = function(title, description, username, cb){
 	pg.connect(conn, function(err, client, done){
 	if(err){
 		console.log("error in connection to database");
-		cb(database connection error);
+		cb("database connection error");
 	}	
 	
 	var qry = 'insert into challenges (title, description, username) values ($1, $2, $3);'; // can use $1, $2, $3  
@@ -54,7 +54,7 @@ exports.addChallenges = function(title, description, username, cb){
 		done();
 		if(err){
 			console.log("call to database did not work correctly");
-			cb(database cannot insert);
+			cb("database cannot insert");
 		}
 		else{
 			cb(undefined, result.rows[0]);
