@@ -18,17 +18,22 @@ exports.home = function(req,res){
 
 
 exports.challenges = function(req, res){
-	//challengeList should return an array of challenges
-	users.getChallenges(function(err, challengeList){
+	/*var description = req.body.description;
+	var title = req.body.title;
+*/
+	res.render('challenges');
+/*
+	users.getChallenges( function(err, challengeList){
 		if(err)
 			console.log('An error has occured. Please try again later');
 		else{
-			res.render('challengearena', { 
+			res.render('challenges', { 
 				challengeList : challengeList;
 			});
 		}
-
 	});
+
+	users.addChallenge(description, title);*/
 }
 
 
