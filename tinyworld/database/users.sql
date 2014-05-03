@@ -1,5 +1,5 @@
 drop table if exists users cascade;
--- drop table if exists posts cascade;
+drop table if exists challenges cascade;
 -- drop table if exists relations cascade;
 
 create table users (
@@ -16,23 +16,18 @@ create table users (
     picture bytea,
     primary key (uid)
 );
-/*
-create table challenges(
-    cid SERIAL,
-    cname varchar(50),
-    
-);
-*/
 
-/*
-create table posts (
-    pid SERIAL,
-    username varchar(50),
-    post varchar(300),
-    primary key (pid)
+create table challenges (
+    chalid SERIAL,
+    title text,
+    description text,
+	username varchar(50),
+    posts text[],
+    primary key (chalid)
 );
-*/
 
+insert into challenges (title, description, username, posts) values ('Poem', 'Write poems', 'Bunny', '{{"Submission 1"},{"Submission 2"},{"Submission 3"}}');
+insert into challenges (title, description, username, posts) values ('Good Memories', 'What was your best memory', 'Baby', '{""}, {""}');
 /*
 create table relations (
     uid int,

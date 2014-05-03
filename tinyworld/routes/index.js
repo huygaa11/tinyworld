@@ -1,4 +1,4 @@
-
+var challenges = require('../lib/challenges');
 var users = require('../lib/users');
 
 //This one was here by default. Not necessary
