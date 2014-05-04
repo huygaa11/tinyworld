@@ -1,6 +1,6 @@
-var challenges = require('../lib/challenges');
-var users = require('../lib/users');
 
+var users = require('../lib/users');
+var challenges = require('../lib/challenges');
 //This one was here by default. Not necessary
 exports.index = function(req, res){
   res.render('index', { title: 'Welcome to Tiny World' });
@@ -15,28 +15,6 @@ exports.home = function(req,res){
 
 	}
 };
-
-
-exports.challenges = function(req, res){
-	/*var description = req.body.description;
-	var title = req.body.title;
-*/
-	res.render('challenges');
-/*
-	users.getChallenges( function(err, challengeList){
-		if(err)
-			console.log('An error has occured. Please try again later');
-		else{
-			res.render('challenges', { 
-				challengeList : challengeList;
-			});
-		}
-	});
-
-	users.addChallenge(description, title);*/
-}
-
-
 
 exports.toprankings = function(req, res){
 	users.getAllUsers(function(err, allusers){
@@ -65,11 +43,65 @@ exports.profile = function(req, res){
 	});
 };
 
+exports.post = function (req, res) {
+	var user = req.session.user;
+	var chalid = req.session.chalid;
+	if (!user) {
+		res.redirect('/');
+	}
+	else {
+		var post = req.body.comment;
+		console.log(post);
+		if (!post) {
+			res.redirect('/arena/' + chalid);
+		}
+		else {
+			challenges.addPosts(user, post, chalid);
+			res.redirect('/arena/' + chalid);
+		}
+	}
+};
+
+exports.makeChallenge = function(req, res){
+	var user = req.session.user;
+	var title = req.body.title;
+	var description = req.body.description;
+
+	if(!user) {
+		res.redirect('/');
+	}
+	else {
+		if (!description)
+			res.redirect('/challenge');
+		else {
+			challenges.addChallenges(title, description, user);
+			res.redirect('/challenge');
+		}
+	}
+};
+
+exports.arena = function(req, res){
+	var user = req.session.user;
+	var id = req.params.id;
+	req.session.chalid = id;
+	challenges.getArena(id,function (err, challenge){
+		challenges.getPosts(id, function (err, posts){
+			res.render('arena', {
+				title: 'Arena',
+				challenge : challenge,
+				posts : posts
+			});
+		});
+	});
+};
+
 exports.challenge = function(req, res){
-	var user = req.sesion.user;
-	res.render('challenges', {
-		user : user,
-		challenges : user.challenges
+	var user = req.session.user;
+	challenges.getChallenges(function (err, challenges){
+		res.render('challenges', {
+			user : user,
+			challengeList : challenges
+		});
 	});
 	
 };
@@ -106,27 +138,26 @@ exports.register = function (req, res) {
 	var age = req.body.age;
 	// var gender = req.body.gender;
 	// var email = req.body.email;
-	if (!username || !password) {
+	if (!username || !password || !fname || !lname || !age) {
 		req.flash('register', 'Must provide username and password');
-		res.redirect('/seeRegistration');
+		res.redirect('/registration');
 	}
 	else {
 
 		users.exists(username, function (exists) {
 			if (exists) {
 				req.flash('register', 'Username already exists. Pick another!');
-				res.redirect('/seeRegistration');
+				res.redirect('/registration');
 			}
 			else {
 
-				users.add(username, fname, lname, age, password, function (err, user) { //username
+				users.add(username, fname, lname, age, password, function (err, user) { //user is username
 
 						if (err) {
 							req.flash('register', 'Problem with registration. Try again.');
 						}
 						else {
 							req.session.user = user;
-							console.log(user);
 							res.redirect('/profile');
 						}
 				});
@@ -140,13 +171,13 @@ exports.authorize = function (req, res) {
 	var password = req.body.pass;
 	if (!username || !password) {
 		req.flash('authorize', 'Must provide username and password');
-		res.redirect('/home');
+		res.redirect('/');
 	}
 	else {
 		users.validate(username, password, function (err, user) {
 			if (err) {
 	req.flash('authorize', err);
-	res.redirect('/home');
+	res.redirect('/');
 			}
 			else {
 	req.session.user = user;

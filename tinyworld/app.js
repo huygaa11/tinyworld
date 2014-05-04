@@ -15,7 +15,6 @@ var flash = require('connect-flash');
 app.set('port', process.env.PORT || 8080);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
@@ -36,9 +35,8 @@ if ('development' == app.get('env')) {
 
 
 //Route Views
-app.get('/', routes.index); //no users set up yet, so won't load
+app.get('/', routes.home); //no users set up yet, so won't load
 app.get('/users', user.list);
-app.get('/challenges', routes.challenges);
 
 app.get('/toprankings', routes.toprankings);
 app.get('/profile', routes.profile);
@@ -47,10 +45,12 @@ app.get('/challenge', routes.challenge);
 app.get('/forgotpw', routes.forgotpw);
 app.get('/settings', routes.settings);
 app.post('/register', routes.register);
-app.get('/seeRegistration', routes.seeRegistration);
+app.get('/registration', routes.seeRegistration);
 app.get('/logout', routes.logout);
 app.post('/authorize', routes.authorize);
-
+app.get('/arena/:id', routes.arena);
+app.post('/arena/post', routes.post);
+app.post('/makeChallenge', routes.makeChallenge);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

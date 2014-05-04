@@ -57,7 +57,6 @@ exports.add=function(username, fname, lname, age, password, callback){
 
 				client.query(qry , [username, fname, lname, age, password],  function (err, result) {
 					done();
-					console.log(result.rows[0].username);
 					if(err){
 						console.log("call to database did not work correctly");
 						callback(err);

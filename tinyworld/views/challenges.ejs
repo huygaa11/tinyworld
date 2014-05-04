@@ -1,102 +1,84 @@
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+<html lang="en">
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Challenges</title>
 
-    <title>Challenges</title>
+	<!-- Bootstrap core CSS -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
-    <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="/css/narrow.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/css/custom.css">
+	</head>
 
-    <!-- Custom styles for this template -->
-    <link href="jumbotron-narrow.css" rel="stylesheet">
+	<body screen_capture_injected="true">
 
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  <link type="text/css" rel="stylesheet" href="chrome-extension://cpngackimfmofbokmjmljamhdncknpmg/style.css"><script type="text/javascript" charset="utf-8" src="chrome-extension://cpngackimfmofbokmjmljamhdncknpmg/js/page_context.js"></script><style type="text/css"></style><style type="text/css"></style></head>
-
-  <body screen_capture_injected="true">
-
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:#428bca">
-      <div class="container">
-        <div class="navbar-header">
-        
-          <a class="navbar-brand" href="#" style="color:white; font-size: 40px;">tinyWorld</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" style='color:white;'>Profile</a></li>
-            <li><a href="#" style='color:white;'>Settings</a></li>
-            <li><a href="#" style='color:white;'>Top Rankings</a></li>
-            <li><a href="#" style='color:white;'>Challenges</a></li>
-            <li><a href="#" style='color:white;'>Logout</a></li>
-          </ul>
-        </div>
-      </div>
-        
-    </div>
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:#428bca" id="nav-gradient">
+		<div class="container">
+			<div class="navbar-header">
+		
+				<a class="navbar-brand" href="#" style="color:white; font-size: 40px;">tinyWorld</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/profile" style='color:white;'>Profile</a></li>
+					<li><a href="/challenge" style='color:white;'>Challenges</a></li>
+					<li><a href="/logout" style='color:white;'>Logout</a></li>
+				</ul>
+			</div>
+	  </div>
+		
+	</div>
 
 
-    <div class="container">
+	<div class="container">
 
 
-      <div class="jumbotron">
-        <h1>Create a Challenge!</h1>
-<form class="form-horizontal" role="form">
+		<div class="jumbotron" id="ele" style="padding-top:2px; padding-bottom: 5.5px;">
+			<h1>Create a Challenge!</h1>
+			<form class="form-horizontal" method="post" action="makeChallenge" role="form">
 
-  <div class="form-group">
-    <div class="col-sm-10">
-      <input class="form-control" name="title" placeholder="Give your challenge a name!">
-    </div>
-  </div>
+				<div class="form-group">
+					<div class="span 6 text-center">
+						<input class="form-control" name="title" placeholder="Give your challenge a name!">
+					</div>
+				</div>
 
-  <div class="form-group">
-    <div class="col-sm-10">
-      <textarea name="description" rows="10" cols="137" placeholder="Write your challenge here!"></textarea>
-    </div>
-  </div>
+				<div class="form-group">
+					<div class="span 6 text-center">
+						<input class="form-control" name="description" rows="7" cols="137" style="padding-bottom: 10em; padding-top:1em;" placeholder="Write your challenge here!"></textarea>
+					</div>
+				</div>
+				<button class="btn btn-success" type="submit"> Create Challenge! <i class="fa fa-arrow-circle-right"></i> </button> 
 
-</form>
-        <a class="btn btn-lg btn-success" href="/challenges" role="button">Submit</a>
-      </div>
+			</form>
+		</div>
 
-      <div class="row marketing">
-        <div class="col-lg-12">
+		<div class="row comments">
 
+			<div class="col-lg-12 pre-scrollable">
+				<% for(var i = 0; i < challengeList.length; i++) { %>
+					<div class="clickable" name=<%=challengeList[i].chalid%> >
+					<h2><a href="/arena/<%=challengeList[i].chalid%>" > <%= challengeList[i].title %> </a><small>By <%= challengeList[i].username%></small></h2>
+					<span style="border: 2px"> <%= challengeList[i].description %> </span>
+					</div>
+				<% } %>
+			</div>
 
-            <% for(var i = 0; i < challengeList.length; i++) { %>
-            <h2><%= challengeList[i].title %> </h2>
-            <p style="border: 2px"> <%= challengeList[i].description %> </p>
-            <button class="btn btn-default" href="./theChallenge"> Accept </button>
+		
+		</div>
 
-            <% } %>
+		<div class="footer">
+			<p>© tinyWorld 2014</p>
+		</div>
 
-
-        </div>
-
-        
-      </div>
-
-      <div class="footer">
-        <p>© tinyWorld 2014</p>
-      </div>
-
-    </div> <!-- /container -->
+	</div> <!-- /container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-  
-        <script src="jquery-1.11.0.min.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-</body></html>
+</body>
+</html>
