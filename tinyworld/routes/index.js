@@ -67,11 +67,12 @@ exports.makeChallenge = function(req, res){
 	var title = req.body.title;
 	var description = req.body.description;
 
+
 	if(!user) {
 		res.redirect('/');
 	}
 	else {
-		if (!description)
+		if (!description || !title)
 			res.redirect('/challenge');
 		else {
 			challenges.addChallenges(title, description, user);
