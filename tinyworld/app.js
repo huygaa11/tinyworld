@@ -37,7 +37,7 @@ if ('development' == app.get('env')) {
 //Route Views
 app.get('/', routes.home); //no users set up yet, so won't load
 app.get('/users', user.list);
-
+app.get('/profile/:user', routes.getProfile); 
 app.get('/toprankings', routes.toprankings);
 app.get('/profile', routes.profile);
 app.get('/home', routes.home);

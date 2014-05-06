@@ -15,7 +15,7 @@
 			<div class="container-old">
 				<div class="navbar-header">
 				
-					<a class="navbar-brand" href="#" style="color:white; font-size: 40px;">tinyWorld</a>
+					<a class="navbar-brand" href="/" style="color:white; font-size: 40px;">tinyWorld</a>
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
@@ -40,8 +40,9 @@
 			</div>
 			<div class="row comments" >
 				<div class="col-lg-12">
-					<% for (var i = 0; i < posts.length; i++) { %>
-						<h2><%= posts[i].username %> <small>said: </small> <%= posts[i].post %></h2>
+					<% for (var i = posts.length-1; i >= 0; i--) { %>
+						<h2><a href="/profile/<%=posts[i].username%>"><%= posts[i].username %></a> <small>said: </small> <%= posts[i].post %></h2>
+
 					<% } %>
 				</div>
 

@@ -73,7 +73,7 @@ exports.getPosts = function(challengeID, cb){
 			throw err;
 		}
 
-		var qry = 'select * from posts where chalid=$1';
+		var qry = 'select * from posts where chalid=$1 order by chalid DESC';
 		client.query(qry, [challengeID], function (err, result) {
 			done();
 			if(err){

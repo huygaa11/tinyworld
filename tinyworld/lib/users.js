@@ -43,7 +43,7 @@ pg.connect(conn, function(err, client, done){ // connecting to the db
 */
 
 
-exports.add=function(username, fname, lname, age, password, callback){
+exports.add=function(username, fname, lname, age, password, bio, callback){
 	exists(username, function(found){
 		if(found) callback('user exists');
 		else {
@@ -53,9 +53,9 @@ exports.add=function(username, fname, lname, age, password, callback){
 					throw err;
 				}
 	
-				var qry = 'insert into users (username, fname, lname, age, password) values ($1, $2, $3, $4, $5)' + 'returning username;'; // can use $1, $2, $3  
+				var qry = 'insert into users (username, fname, lname, age, password, bio) values ($1, $2, $3, $4, $5, $6)' + 'returning username;'; // can use $1, $2, $3  
 
-				client.query(qry , [username, fname, lname, age, password],  function (err, result) {
+				client.query(qry , [username, fname, lname, age, password, bio],  function (err, result) {
 					done();
 					if(err){
 						console.log("call to database did not work correctly");
@@ -66,7 +66,7 @@ exports.add=function(username, fname, lname, age, password, callback){
 			});
 		}
 	});
-};
+}; 
 
 
 var exists = function(username, cb){
@@ -170,6 +170,7 @@ exports.validate = function(username, password, callback){
 			callback(err);
 		}
 		// do something with the result 
+		else if(result.rows.length === 0) callback('no such user');
 		else {
 			if(password !== result.rows[0].password) callback('Password invalid');
 			else {

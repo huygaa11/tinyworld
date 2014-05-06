@@ -137,10 +137,11 @@ exports.register = function (req, res) {
 	var fname = req.body.fname;
 	var lname = req.body.lname;
 	var age = req.body.age;
+	var bio = req.body.bio;
 	// var gender = req.body.gender;
 	// var email = req.body.email;
-	if (!username || !password || !fname || !lname || !age) {
-		req.flash('register', 'Must provide username and password');
+	if (!username || !password || !fname || !lname || !age || !bio) {
+		req.flash('register', 'Must fill in all fields');
 		res.redirect('/registration');
 	}
 	else {
@@ -152,7 +153,7 @@ exports.register = function (req, res) {
 			}
 			else {
 
-				users.add(username, fname, lname, age, password, function (err, user) { //user is username
+				users.add(username, fname, lname, age, password, bio, function (err, user) { //user is username
 
 						if (err) {
 							req.flash('register', 'Problem with registration. Try again.');
@@ -165,7 +166,8 @@ exports.register = function (req, res) {
 			}
 		});
 	}
-};
+}; 
+
 
 exports.authorize = function (req, res) {
 	var username = req.body.user;
@@ -193,3 +195,16 @@ exports.seeRegistration = function (req, res){
 				registererr: req.flash('register') //remember to add this
 			});
 };
+
+exports.getProfile = function(req, res){ //function used to get to another user's profile, gets user id from
+	var username = req.params.user;
+	users.getuser(username, function (err, user){
+		if(err)
+			console.log("error");
+		else {
+			res.render('profile', { title: 'Profile',
+				rows : user
+			});
+		}
+	});
+}; 
