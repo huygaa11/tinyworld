@@ -1,10 +1,18 @@
+
+/*
+	This file includes methods to manipulate user database
+*/
+
+// creating connections with the database
 var pg = require('pg');
-
 var connString = 'postgres://vagrant:vagrant@localhost/vagrant';
-
 var conn = connString;
 
-
+/*
+	this function returns challenge arena info from the database. 
+	if there is an error it returns error
+	if there is not error, it returns the challenges.
+*/
 exports.getArena = function(challengeID, callback){
 	pg.connect(conn, function(err, client, done){ // connecting to the db
 		if(err){ // if cannot connect to the db throw error, bad practice!! send callback!
@@ -26,6 +34,11 @@ exports.getArena = function(challengeID, callback){
 	});
 };
 
+/*
+	this function returns a challengeinfo from the database. 
+	if there is an error it returns error
+	if there is not error, it returns the challenges.
+*/
 exports.getChallenges = function(cb){
 	pg.connect(conn, function(err, client, done){ // connecting to the db
 		if(err){ // if cannot connect to the db throw error, bad practice!! send callback!
@@ -48,6 +61,10 @@ exports.getChallenges = function(cb){
 };
 
 
+/*
+	this function adds post to a challenge in the database. 
+	if there is an error it returns error
+*/
 exports.addPosts = function(username, post, challengeID){
 	pg.connect(conn, function(err, client, done){
 		if(err){
@@ -66,6 +83,11 @@ exports.addPosts = function(username, post, challengeID){
 	});
 };
 
+/*
+	this function gets the posts of a challenge  from the database. 
+	if there is an error it returns error
+	if there is not error, it returns the posts.
+*/
 exports.getPosts = function(challengeID, cb){
 	pg.connect(conn, function(err, client, done){
 		if(err){
@@ -87,6 +109,10 @@ exports.getPosts = function(challengeID, cb){
 	});
 };
 
+/*
+	this function adds a challenge  from the database. 
+	if there is an error it returns error
+*/
 exports.addChallenges = function(title, description, username){
 	pg.connect(conn, function(err, client, done){
 		if(err){
@@ -105,4 +131,6 @@ exports.addChallenges = function(title, description, username){
 	});
 };
 
-
+/*
+	end of the file
+*/

@@ -1,7 +1,10 @@
+/*
+	This file includes methods to manipulate user database
+*/
+
+// creating connections with the database
 var pg = require('pg');
-
 var connString = 'postgres://vagrant:vagrant@localhost/vagrant';
-
 var conn = connString;
 
 /* template for inserting into the database
@@ -42,7 +45,10 @@ pg.connect(conn, function(err, client, done){ // connecting to the db
 });
 */
 
-
+/*
+	this function adds user to the database. if there is an error it returns error
+	if there is not error, it returns the user added.
+*/
 exports.add=function(username, fname, lname, age, password, bio, callback){
 	exists(username, function(found){
 		if(found) callback('user exists');
@@ -68,7 +74,10 @@ exports.add=function(username, fname, lname, age, password, bio, callback){
 	});
 }; 
 
-
+/*
+	this function checks if user is in the database. if there is an error it returns error
+	if there is no error, it returns null.
+*/
 var exists = function(username, cb){
 pg.connect(conn, function(err, client, done){ // connecting to the db
 	if(err){ // if cannot connect to the db throw error, bad practice!! send callback!
@@ -89,6 +98,10 @@ pg.connect(conn, function(err, client, done){ // connecting to the db
 });
 };
 
+/*
+	this function checks if user is in the database. if there is an error it returns error
+	if there is no error, it returns null.
+*/
 exports.exists = function(username, cb){
 pg.connect(conn, function(err, client, done){ // connecting to the db
 	if(err){ // if cannot connect to the db throw error, bad practice!! send callback!
@@ -110,7 +123,10 @@ pg.connect(conn, function(err, client, done){ // connecting to the db
 });
 };
 
-
+/*
+	this function gets an user is in the database. if there is an error it returns error
+	if there is no error, it returns the user.
+*/
 exports.getuser=function(username, cb){
 pg.connect(conn, function(err, client, done){ // connecting to the db
 	if(err){ // if cannot connect to the db throw error, bad practice!! send callback!
@@ -132,7 +148,9 @@ pg.connect(conn, function(err, client, done){ // connecting to the db
 });
 };
 
-// GET_ALL_USERS function returns all the users in the database
+/*
+	GET_ALL_USERS function returns all the users in the database
+*/
 exports.getAllUsers=function(cb){
 pg.connect(conn, function(err, client, done){ // connecting to the db
 	if(err){ // if cannot connect to the db throw error, bad practice!! send callback!
@@ -155,6 +173,10 @@ pg.connect(conn, function(err, client, done){ // connecting to the db
 });
 }; //  GET_ALL_USERS  ends here
 
+/*
+	this function validates user information. if there is an error it returns error
+	if there is no error, the user.
+*/
 exports.validate = function(username, password, callback){
 	pg.connect(conn, function(err, client, done){ // connecting to the db
 	if(err){ // if cannot connect to the db throw error, bad practice!! send callback!
@@ -181,4 +203,8 @@ exports.validate = function(username, password, callback){
 	});
 });
 };
+
+/*
+	end of the file
+*/
 
