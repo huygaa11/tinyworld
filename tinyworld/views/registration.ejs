@@ -5,41 +5,29 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>TinyWorld</title>
-		<!-- Bootstrap -->
+		<!-- CSS (Bootstrap and custom) -->
 		<link href="/css/bootstrap.min.css" rel="stylesheet"/>
-		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
+		<link rel="stylesheet" type="text/css" href="/css/custom.css">
+
 		<style type="text/css">
-		.input-group{
-		padding-bottom:20px;
-		}
-		body {
-		padding-top: 70px;
-		padding-bottom: 30px;
-		}
-		
+			.input-group{ padding-bottom:20px; }
+			body { background: url('/images/texture.png'); }
 		</style>
+
 	</head>
-	<body>
-		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:#428bca">
+	<body style="background-color:#E8E8E8;">
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:#428bca" id="nav-gradient">
 			<div class="container">
 				<div class="navbar-header">
-				 
-					<a class="navbar-brand" href="#" style="color:white; font-size: 40px;" href="/home">tinyWorld</a>
+					<a class="navbar-brand" style="color:white; font-size: 40px;" href="/">tinyWorld</a>
 				</div>
-
 			</div>
-				
 		</div>
 
 
-			<div class="container theme-showcase" style="background-color:#E8E8E8; border-radius:10px;">
+			<div class="container theme-showcase" style="border-radius:10px;" id="ele-shadow">
 				<div class="page-header" >
-					<h1> Signing Up! </h1>
+					<h1 style="color: white;"> Signing Up! </h1>
 				</div>
 				<div class="row" style="padding-bottom:10px;">
 					<div class="col-md-4 col-md-offset-2">
@@ -51,7 +39,7 @@
 						<div class="col-md-4 col-md-offset-2">
 
 								<div class="input-group">
-									<input type="text" class="form-control" name="user" id="inputEmail" placeholder=" Enter Email" >
+									<input type="text" class="form-control" name="user" id="inputEmail" placeholder="Enter Username" >
 									<span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i></span>
 								</div>
 
@@ -59,9 +47,8 @@
 									<input type="text" class="form-control" name="fname" id="inputFirstName" placeholder="Enter First Name" >
 									<span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i></span>
 								</div>
-
 								<div class="input-group">
-									<input type="text" class="form-control" name="age" id="inputAge" placeholder="Age" >
+									<input type="number" class="form-control" name="age" id="inputAge" placeholder="Age" >
 									<span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i></span>
 								</div>										
 				
@@ -70,7 +57,7 @@
 						<div class="col-md-4">
 
 							<div class="input-group">
-								<input type="text" class="form-control" name="pass" id="inputPassword" placeholder="Password" >
+								<input type="password" class="form-control" name="pass" id="inputPassword" placeholder="Password" >
 								<span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i> 3.14 char minimum</span>
 							</div>
 
@@ -78,20 +65,16 @@
 								<input type="text" class="form-control" name="lname" id="inputLastName" placeholder="Enter Last Name" >
 								<span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i></span>
 							</div>
-<!-- 
 							<div class="input-group">
-								<input type="text" class="form-control" name="hobbies" id="inputHobbies" placeholder="Enter Hobby" >
-								<span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i></span>
-							</div> -->
+									<input type="text" class="form-control" name="bio" id="inputDescription" placeholder="Enter Brief Description" >
+									<span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i></span>
+								</div> 
 							<button type="submit" class="btn btn-success" >Register</button>
 						</div>
 						<% if(registererr) { %>
    							<p class="error"><%= registererr %></p>
  						<% } %>
 					</form>
-				 
 			</div>
-<!-- /*				<script src="jquery-1.11.0.min.js"></script>
-				<script src="bootstrap/js/bootstrap.min.js"></script>*/ -->
 			</body>
 		</html>

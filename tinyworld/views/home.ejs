@@ -1,4 +1,5 @@
-<html lang="en"><head>
+<html lang="en">
+	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,60 +10,176 @@
 
 		<!-- Bootstrap core CSS -->
 		<link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/homecss.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link  href="/css/style4.css" rel="stylesheet">
+		<style type="text/css">
+			body {
+				padding-top: 50px;
+				padding-bottom: 20px;
+			}
+		</style>
+	</head>
 
-		<!-- Custom styles for this template -->
-		<!-- <link href="jumbotron.css" rel="stylesheet"> -->
+<body>
 
-		<!-- Just for debugging purposes. Don't actually copy this line! -->
-		<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
-	<style type="text/css">
-body {
-	padding-top: 50px;
-	padding-bottom: 20px;
-}
-</style></head>
-
-	<body>
-
-		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:#428bca">
-			<div class="container">
-				<div class="navbar-header">
-	
-					<a class="navbar-brand" href="#" style="color:white; font-size: 40px;">tinyWorld</a>
-				</div>
-				<div class="navbar-collapse collapse">
-					<form method="post" action="authorize">
-					<div class="navbar-form navbar-right" role="form">
-						<div class="form-group">
-							<input type="text" name="user" placeholder="Email" class="form-control">
-						</div>
-						<div class="form-group">
-							<input type="password" name="pass" placeholder="Password" class="form-control">
-						</div>
-						<div class="form-group">
-						<button type="submit" class="btn btn-success">Sign in</button>
-						</div>
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:#428bca; border: 0px;">
+		<div class="container">
+			<div class="navbar-collapse collapse">
+				<form method="post" action="authorize">
+				<div class="navbar-form navbar-right" role="form">
+					<div class="form-group">
+						<input type="text" name="user" placeholder="Email" class="form-control">
 					</div>
-					</form>
-				</div><!--/.navbar-collapse -->
-			</div>
-			
-		</div>
+					<div class="form-group">
+						<input type="password" name="pass" placeholder="Password" class="form-control">
+					</div>
+					<div class="form-group">
+					<button type="submit" class="btn btn-success">Sign in</button>
+					</div>
+				</div>
+				</form>
+			</div><!--/.navbar-collapse -->
+		</div>		
+	</div>
+
 
 		<!-- Main jumbotron for a primary marketing message or call to action -->
-		<div class="jumbotron">
-			<div class="container">
-				<h1>Challenge the 10 people who will actually use this website!</h1>
-				<p>Compete with others who share similar interests and see how well you fare in our rating arena. The highest rated users at the end of each week will receive an amazing reward of nothing for their efforts. Register for FREE now and join the fun :).</p>
-				<p><a href="/seeRegistration" class="btn btn-primary btn-lg" role="button">Sign up</a></p>
-			</div>
-		</div>
+<div class="header alt vert">
+  	<div class="container">
+    	<h1>TinyWorld</h1>
+      	<p class="lead"></p>
+      	<div>&nbsp;</div>
+      	<a href="/registration" class="btn btn-default btn-lg">
+          Sign Up 
+          <i class="fa fa-arrow-circle-right"></i>
+        </a>
+
+  	</div>
+</div>
+
+<hr>
+
+<div id="sec1" class="blurb">
+  	<div class="container">
+    	<div class="row">
+      		<div class="col-md-7">
+        		<h1>What is tinyworld?</h1>
+        		<p class="lead">It is place for people to compare their skills with others. Accept a challenge, or make your own today!</p>
+      		</div>
+      		<div class="col-md-5">
+        		<h1 class="pull-right"><i class="icon-mobile-phone icon-3x"></i> <i class="icon-tablet icon-3x"></i> <i class="icon-laptop icon-3x"></i></h1>
+      		</div>
+    	</div>
+  	</div>
+</div>
+
+<div class="callout" id="sec3">
+  	<div class="vert">
+    	<div class="col-md-12 text-center"><h2>Meet new people.</h2></div>
+    	<div class="col-md-12 text-center"><h2>Build relationships to last a lifetime.</h2></div>
+    </div>
+</div>
+
+<hr>
+
+<div class="gallery">
+  
+  	<div class="row">
+      	<div class="col-md-6 col-md-offset-3 text-center">
+        	<h2>More Great Reasons to Join TinyWorld</h2>
+        	<br>
+      	</div>
+  	</div>
+  
+  	<div class="container well well-lg">
+    <div class="row" style="font-size: 16px;">
+      	<div class="col-sm-3">
+          	<div class="list-group">
+            	<a class="list-group-item"><strong>Meet people with similar interests</strong></a>
+          	</div>
+        </div>
+        <div class="col-sm-3">
+          	<div class="list-group">
+            	<a class="list-group-item"><strong>Hone your skills</strong></a>
+          	</div>
+        </div>
+        <div class="col-sm-3">
+          	<div class="list-group">
+            	<a class="list-group-item"><strong>Learn more about your hobbies</strong></a>
+          	</div>
+        </div>
+        <div class="col-sm-3">
+          	<div class="list-group">
+            	<a class="list-group-item"><strong>It's Free!</strong></a>
+          	</div> 
+        </div>    
+    </div>
+  	</div>
+
+  	<div class="container well well-lg">
+	<div class="row text-center">
+  		<h2>the best reason: our amazing team!</h2>
+  	</div>
+    <div class="row">
+    	<div class="col-md-12">&nbsp;</div>
+    	<div class="col-md-12 col-md-offset-2">
+      		<div class="row hidden-xs">
+       			<div class="col-sm-2"><img src="/images/calvin.jpg" width="100" height="100"></div>
+       			<div class="col-sm-2"><img src="/images/jacky.jpg" width="100" height="100"></div>
+       			<div class="col-sm-2"><img src="/images/hugo.jpg" width="100" height="100"></div>
+     		  </div>
+     		<div class="row hidden-xs">
+     			<span class="col-sm-2" style="font-size: 16px;"><strong>Calvin Mei</strong></span>
+     			<span class="col-sm-2" style="font-size: 16px;"><strong>Jacky Tse</strong></span>
+     			<span class="col-sm-2" style="font-size: 16px;"><strong>Batkhuyag Batsaikhan</strong></span>
+     		</div>
+        <div class="row hidden-xs" style="padding-top:50px">
+            <div class="col-sm-2"><img class="img-circle grayscale" src="/images/alex.jpg" width="90" height="90"></div>
+            <div class="col-sm-2"><img class="img-circle grayscale" src="/images/holder.jpg" width="90" height="90"></div>
+          </div>
+        <div class="row hidden-xs">
+          <span class="col-sm-2">Alexander Moy</span>
+          <span class="col-sm-2">Dennis Fong</span>
+        </div> 
+     	</div>
+    </div>
+	</div>
+</div>
+
+<hr>
+
+<div class="header alt vert">
+  	<div class="container">
+    	<div class="row">
+      		<div class="col-md-6 col-md-offset-3 text-center" style="padding-top: 50px;">
+        	<h3 style="color:white;">Tinyworld awaits you.</h3>
+        	<p class="lead"><a href="/registration" class="btn btn-default btn-lg a-btn">
+            <span class="a-btn-text">Sign Up</span> 
+<!--             <span class="a-btn-slide-text">It's Free!</span>
+ -->          </a></p>
+      		</div>
+    	</div>
+    	<footer>
+    		<div class="row">
+      			<div class="col-md-6 col-md-offset-3 text-center">
+        			<hr>
+        			<p><br>TinyWorld ©2013</p>
+      			</div>
+    		</div>
+    	</footer>
+  	</div>
+</div>
+
+
+
+<ul class="nav pull-right scroll-down">
+  <li><a href="#" title="Scroll down"><i class="icon-chevron-down icon-3x"></i></a></li>
+</ul>
+<ul class="nav pull-right scroll-top">
+  <li><a href="#" title="Scroll to top"><i class="icon-chevron-up icon-3x"></i></a></li>
+</ul>
+
 
 
 </body></html>

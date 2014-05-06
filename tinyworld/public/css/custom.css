@@ -1,0 +1,30 @@
+body {
+	padding-top: 70px;
+	padding-bottom: 30px;
+	background: url('/images/texture.png');
+}
+#nav-gradient{
+  	background-image: -moz-linear-gradient(top, #123eab, #466fd5);
+  	background-image: -ms-linear-gradient(top, #123eab, #466fd5);
+  	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#123eab), to(#466fd5));
+  	background-image: -webkit-linear-gradient(top, #123eab, #466fd5);
+  	background-image: -o-linear-gradient(top, #123eab, #466fd5);
+  	background-image: linear-gradient(top, #123eab, #466fd5);
+  	background-repeat: repeat-x;
+}
+#ele-shadow{
+	-moz-box-shadow: 5px 5px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 5px 5px rgba(0,0,0,0.5);
+	box-shadow: 5px 5px rgba(0,0,0,0.5);
+
+  	background-image: -webkit-gradient(linear, 0% top, 100% top, from(#cccccc), to(#cccccc));
+  	background-image: -webkit-linear-gradient(left, color-stop(#cccccc 0%), color-stop(#cccccc 100%));
+  	background-image: -moz-linear-gradient(left, #cccccc 0%, #cccccc 100%);
+  	background-image: linear-gradient(to right, #428bca 0%, #9999cc 100%);
+  	background-repeat: repeat-x;
+}
+
+#ele{
+	background-color: #6c8ad5;
+	color:#06246F;
+}

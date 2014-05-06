@@ -8,28 +8,14 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/custom.css" rel="stylesheet">
+    <script src="/js/jquery-1.11.0.min.js"></script>
 
-    <!-- Custom styles for this template -->
-    <!-- <link href="jumbotron.css" rel="stylesheet"> -->
-
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  <style type="text/css">
-body {
-  padding-top: 50px;
-  padding-bottom: 20px;
-}
-</style></head>
+</head>
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:#428bca">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:#428bca" id="nav-gradient">
       <div class="container">
         <div class="navbar-header">
   
@@ -38,9 +24,7 @@ body {
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/profile" style='color:white;'>Profile</a></li>
-            <li><a href="/settings" style='color:white;'>Settings</a></li>
-            <li><a href="/toprankings" style='color:white;'>Top Rankings</a></li>
-            <li><a href="#" style='color:white;'>Challenges</a></li>
+            <li><a href="/challenge" style='color:white;'>Challenges</a></li>
             <li><a href="/logout" style='color:white;'>Logout</a></li>
           </ul>
         </div><!--/.navbar-collapse -->
@@ -50,31 +34,20 @@ body {
 
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container-fluid">
+    <div class="jumbotron" style="background: url('/images/flag.png')">
+      <div class="container">
 
-        <div class="col-md-4">
+        <div class="col-md-3">
           <h1> <%= rows[0].fname %> <%= rows[0].lname %> </h1>
-          <p><img src="/pictures/Visualbug-Facebook1.jpg" alt="image goes here"></p>
+          <p><img src="/images/Visualbug-Facebook1.jpg" alt="image goes here"></p>
           <p>
             <table>
-              <th>About</th>
-              <tr><td>Age: <%= rows[0].age%> </td></tr>
-              <tr><td>Description: <p> To be added </p> </td></tr>
+              <tr><td><strong>Age: </strong><%= rows[0].age%> years</td></tr>              
+              <tr><td><strong>About Me: </strong></td></tr>
+              <tr><td>  <%= rows[0].bio %> </td></tr>  </td></tr>
             </table> 
           </p>
         </div>
-
-        <div class="col-md-3">
-
-        </div>
-
-        <div class="col-md-4">
-          <h3>Recent Competitors</h3>
-
-        </div>
-
-
       </div>
     </div>
 
